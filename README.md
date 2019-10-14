@@ -1,1 +1,3 @@
 # shops-api
+
+typescript + hapi
