@@ -1,0 +1,20 @@
+{
+  "name": "shops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon -e ts  --exec \"yarn run compile\"",
+    "compile": "tsc && node ./dist/server.js"
+  },
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "require-directory": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/hapi": "^18.0.2",
+    "@types/node": "^12.7.12",
+    "nodemon": "^1.19.3",
+    "typescript": "^3.6.4"
+  }
+}
