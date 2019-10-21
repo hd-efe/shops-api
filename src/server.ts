@@ -2,7 +2,7 @@ import * as hapi from 'hapi';
 import routers from './routers/index'
 const server: hapi.Server = new hapi.Server({
     host: 'localhost',
-    port: 8000,
+    port: 8001,
     routes: {cors: {origin: ['*']} }
 });
 
