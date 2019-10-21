@@ -3,11 +3,13 @@ const Sequelize = require('sequelize')
 const fs = require('fs')
 const path = require('path')
 const Op = Sequelize.Op
-let db = {
-    Sequelize: null,
-    sequelize: null,
-    Op: null
+interface DB {
+	Sequelize?: any,
+	sequelize?: any,
+	Op?: any,
+	[index: string]: any
 }
+let db: DB = {order: null};
 const sequelize = new Sequelize(config.database, config.username, config.password, {
 	host: config.host,
 	dialect: 'mysql',
@@ -22,15 +24,16 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 	timezone: '+08:00' //东八时区
 })
 
-fs.readdirSync(__dirname).filter((file) => {
-	return (file.indexOf('.') !== 0) && (file != 'index.js');
-}).forEach((file) => {
-	var model = sequelize['import'](path.join(__dirname, file));
-	db[model.name] = model;
-})
-
+// fs.readdirSync(__dirname).filter((file) => {
+// 	return (file.indexOf('.') !== 0) && (file != 'index.js');
+// }).forEach((file) => {
+// 	var model: any = sequelize.import(path.join(__dirname, file));
+// 	console.log(model)
+// 	db[model.name] = { ins: model}
+// })
+db.order = sequelize.import(path.join(__dirname, 'order.js'))
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.Op = Op;
 
-module.exports = db;
+export default db;
