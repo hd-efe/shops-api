@@ -13,7 +13,7 @@ const hapi = require("hapi");
 const index_1 = require("./routers/index");
 const server = new hapi.Server({
     host: 'localhost',
-    port: 8001,
+    port: 3001,
     routes: { cors: { origin: ['*'] } }
 });
 server.route(index_1.default);
