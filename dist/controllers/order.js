@@ -16,32 +16,19 @@ class Order {
         return __awaiter(this, void 0, void 0, function* () {
             let body = req.payload;
             let id = 'order_id_' + index_2.default.uuid(23);
-            let name = body.name;
-            let type = body.type;
-            let tel = body.tel;
-            let number = body.number;
-            let province = body.province;
-            let city = body.city;
-            let county = body.county;
-            let areaCode = body.areaCode;
-            let addressDetail = body.addressDetail;
-            let postalCode = body.postalCode;
-            let ctime = new Date();
-            console.log(body);
-            let createRs = yield index_1.default.order.create({
+            let user_id = body.user_id;
+            let amount = body.amount;
+            let desc = body.desc;
+            let ctime = new Date().getTime();
+            let params = {
                 id,
-                name,
-                type,
-                tel,
-                number,
-                province,
-                city,
-                county,
-                areaCode,
-                addressDetail,
-                postalCode,
+                user_id,
+                amount,
+                desc,
                 ctime
-            });
+            };
+            console.log(params);
+            let createRs = yield index_1.default.order.create(params);
             if (createRs) {
                 return {
                     code: 1,

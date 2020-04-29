@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const order_1 = require("../controllers/order");
+const notice_1 = require("../controllers/notice");
 console.log(order_1.default);
 const routers = [
     {
@@ -9,6 +10,11 @@ const routers = [
         handler: (request, h) => {
             return h.response('pppppppppp').code(200);
         }
+    },
+    {
+        path: '/notice',
+        method: 'GET',
+        handler: notice_1.default.index
     },
     {
         path: '/order/add',

@@ -1,4 +1,5 @@
 import orderController from '../controllers/order';
+import noticeController from '../controllers/notice';
 console.log(orderController)
 const routers = [
     {
@@ -7,6 +8,11 @@ const routers = [
         handler: (request, h) => {
             return h.response('pppppppppp').code(200);
         }
+    },
+    {
+        path: '/notice',
+        method: 'GET',
+        handler: noticeController.index
     },
     {
         path: '/order/add',
