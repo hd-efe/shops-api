@@ -23,6 +23,12 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 	},
 	timezone: '+08:00' //东八时区
 })
+sequelize.authenticate().then(() => {
+	console.log('数据库连接成功')
+}).catch(err => {
+	console.log('数据库连接失败')
+	console.log(err)
+})
 
 // fs.readdirSync(__dirname).filter((file) => {
 // 	return (file.indexOf('.') !== 0) && (file != 'index.js');

@@ -1,13 +1,12 @@
 import orderController from '../controllers/order';
 import noticeController from '../controllers/notice';
+import commonController from '../controllers/common'
 console.log(orderController)
 const routers = [
     {
         path: '/',
         method: 'GET',
-        handler: (request, h) => {
-            return h.response('pppppppppp').code(200);
-        }
+        handler: commonController.index
     },
     {
         path: '/notice',

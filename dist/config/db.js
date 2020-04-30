@@ -8,6 +8,6 @@ const config = {
     host: '172.96.199.92',
     database: 'finance',
     username: 'root',
-    password: 'maixiaojie@M@123'
+    password: 'maixiaojie@M123'
 };
 exports.default = config;

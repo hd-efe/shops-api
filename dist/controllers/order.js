@@ -19,7 +19,7 @@ class Order {
             let user_id = body.user_id;
             let amount = body.amount;
             let desc = body.desc;
-            let ctime = new Date().getTime();
+            let ctime = new Date();
             let params = {
                 id,
                 user_id,
@@ -51,7 +51,7 @@ class Order {
             var pageNum = parseInt(req.params.pageNum) || 10;
             console.log(req.params);
             let rs = yield index_1.default.order.findAll({
-                attributes: ['id', 'name', 'type', 'tel', 'number', 'province', 'city', 'county', 'areaCode', 'addressDetail', 'postalCode', 'ctime'],
+                attributes: ['id', 'desc', 'amount', 'user_id', 'ctime'],
                 order: [
                     // [sequelize.fn('date', sequelize.col('time')), 'desc'],
                     ['ctime', 'desc']
@@ -59,6 +59,7 @@ class Order {
                 limit: pageSize,
                 offset: (pageNum - 1) * pageSize
             });
+            console.log(rs);
             return {
                 code: 1,
                 data: rs,

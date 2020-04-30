@@ -2,14 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const order_1 = require("../controllers/order");
 const notice_1 = require("../controllers/notice");
+const common_1 = require("../controllers/common");
 console.log(order_1.default);
 const routers = [
     {
         path: '/',
         method: 'GET',
-        handler: (request, h) => {
-            return h.response('pppppppppp').code(200);
-        }
+        handler: common_1.default.index
     },
     {
         path: '/notice',
