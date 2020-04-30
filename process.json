@@ -1,7 +1,7 @@
 {
     "apps": [
       {
-        "name": "shopApi",
+        "name": "financeAPI",
         "cwd": "./dist",
         "script": "server.js",
         "log_date_format": "YYYY-MM-DD HH:mm Z",

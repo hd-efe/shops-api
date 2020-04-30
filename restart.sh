@@ -1,1 +1,1 @@
-git pull && pm2 restart shopApi
+git pull && pm2 restart financeAPI

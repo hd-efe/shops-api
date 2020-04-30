@@ -1,3 +1,3 @@
-# shops-api
+# financeAPI
 
 typescript + hapi
