@@ -21,6 +21,11 @@ const routers = [
         handler: order_1.default.add
     },
     {
+        path: '/order/get_month',
+        method: 'get',
+        handler: order_1.default.getMouthTotal
+    },
+    {
         path: '/order/list/{pageNum}/{pageSize}',
         method: 'get',
         handler: order_1.default.list

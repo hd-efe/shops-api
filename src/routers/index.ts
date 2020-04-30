@@ -13,10 +13,16 @@ const routers = [
         method: 'GET',
         handler: noticeController.index
     },
+    
     {
         path: '/order/add',
         method: 'post',
         handler: orderController.add
+    },
+    {
+        path: '/order/get_month',
+        method: 'get',
+        handler: orderController.getMouthTotal
     },
     {
         path: '/order/list/{pageNum}/{pageSize}',

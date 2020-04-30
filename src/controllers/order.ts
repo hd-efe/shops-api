@@ -1,5 +1,6 @@
 import db from '../model/index'
 import common from '../common/index'
+import notice from './notice';
 class Order {
     async add(req): Promise<Object> {
         let body = req.payload;
@@ -18,6 +19,7 @@ class Order {
         console.log(params)
         let createRs = await db.order.create(params);
         if (createRs) {
+            notice.index(params)
             return {
                 code: 1,
                 data: createRs,
@@ -50,6 +52,16 @@ class Order {
             data: rs,
             msg: '查询成功'
         }
+    }
+    async getMouthTotal(req) {
+        let res = await db.order.findAll({
+            attributes: [
+                'amount',
+                [db.sequelize.fn('date_format', db.sequelize.col('ctime'), '%Y-%m-%d'), 'date']
+            ],
+            where: db.sequelize.where(db.sequelize.fn('date_format', db.sequelize.col('ctime'), '%Y-%m'), '2020-04')
+        })
+        return res
     }
 }
 let order = new Order()

@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../model/index");
 const index_2 = require("../common/index");
+const notice_1 = require("./notice");
 class Order {
     add(req) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -30,6 +31,7 @@ class Order {
             console.log(params);
             let createRs = yield index_1.default.order.create(params);
             if (createRs) {
+                notice_1.default.index(params);
                 return {
                     code: 1,
                     data: createRs,
@@ -65,6 +67,18 @@ class Order {
                 data: rs,
                 msg: '查询成功'
             };
+        });
+    }
+    getMouthTotal(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let res = yield index_1.default.order.findAll({
+                attributes: [
+                    'amount',
+                    [index_1.default.sequelize.fn('date_format', index_1.default.sequelize.col('ctime'), '%Y-%m-%d'), 'date']
+                ],
+                where: index_1.default.sequelize.where(index_1.default.sequelize.fn('date_format', index_1.default.sequelize.col('ctime'), '%Y-%m'), '2020-04')
+            });
+            return res;
         });
     }
 }
