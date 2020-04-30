@@ -3,7 +3,7 @@ import routers from './routers/index'
 const server: hapi.Server = new hapi.Server({
     host: 'localhost',
     port: 3001,
-    routes: {cors: {origin: ['*']} }
+    // routes: {cors: {origin: ['*']} }
 });
 
 server.route(routers);
